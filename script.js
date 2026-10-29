@@ -11,16 +11,23 @@ const statusMessage = document.getElementById("status");
 
 // CHECKPOINT 2: When the Load Friends button is clicked, run loadFriends.
 
-loadButton.addEventListener('click', (onclick) => {
-
-}
+loadButton.addEventListener('click', () => {
+  loadFriends();
+});
 // -------------------------------------------------------------
 // loadFriends: request the file, check the response, parse it.
 // -------------------------------------------------------------
 function loadFriends() {
   // Supplied: shows the user that the page is waiting for a response.
-  statusMessage.classList.remove("error");
-  statusMessage.textContent = "Loading friends...";
+const xhr = new XMLHttpRequest();
+xhr.open("GET", "friends.json");
+xhr.onload = function() { 
+
+ const status = xhr.status;
+  if (status === 200) {
+    const friends = JSON.parse(xhr.responseText);
+ 
+  }
 
   // CHECKPOINT 2: Write the request.
   //   - Create the request and open a GET request for friends.json.
